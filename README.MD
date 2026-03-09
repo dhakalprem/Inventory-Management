@@ -34,7 +34,9 @@ Product: Laptop
 Stock: 25
 Price: ₹70,000
 Supplier: Dell
+
 2️⃣ Core Modules of the System
+
 1. Product Management
 
 Admin can manage products.
@@ -55,6 +57,7 @@ Product Name
 Category
 Price
 Stock Quantity
+
 2. Category Management
 
 Products are grouped by categories.
@@ -65,6 +68,7 @@ Electronics
 Furniture
 Stationery
 Clothing
+
 3. Supplier Management
 
 Stores supplier details.
@@ -75,6 +79,7 @@ Supplier Name
 Phone
 Email
 Address
+
 4. Stock Management
 
 Tracks stock quantity.
@@ -84,6 +89,7 @@ Example:
 Product: Keyboard
 Current Stock: 120
 Minimum Stock: 20
+
 5. Sales Management
 
 Records product sales.
@@ -94,6 +100,7 @@ Invoice No: 1001
 Product: Laptop
 Quantity: 2
 Total: ₹140000
+
 6. Reports
 
 System can generate reports like:
@@ -122,11 +129,14 @@ Layer	Purpose
 Model	Data structure
 View	UI (HTML pages)
 Controller	Handles requests
+
 4️⃣ Project Folder Structure
 
 Example project structure:
 
+
 InventoryManagementSystem
+
 │
 ├── Controllers
 │   ├── ProductController.cs
@@ -149,7 +159,9 @@ InventoryManagementSystem
 ├── wwwroot
 │
 └── Program.cs
+
 5️⃣ Example Product Model
+
 public class Product
 {
     public int Id { get; set; }
@@ -166,6 +178,7 @@ public class Product
 This model represents the Product table in the database.
 
 6️⃣ Entity Framework Database Context
+
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -177,6 +190,7 @@ public class AppDbContext : DbContext
 }
 
 This connects the application to the database.
+
 
 7️⃣ Example Product Controller
 
@@ -197,7 +211,9 @@ public class ProductController : Controller
         return View(products);
     }
 }
+
 8️⃣ Example View (Product List)
+
 Product List
 
 ID   Name      Price   Stock
@@ -216,7 +232,9 @@ Create	Add product
 Read	View products
 Update	Edit product
 Delete	Remove product
+
 🔟 Workflow of the System
+
 User opens website
         ↓
 Product Controller receives request
@@ -226,6 +244,7 @@ Entity Framework fetches data
 SQL Server returns product data
         ↓
 View displays products
+
 1️⃣1️⃣ Advantages
 
 ✔ Easy inventory tracking
@@ -267,11 +286,17 @@ Visual Studio Code
 This guide includes:
 
 1️⃣ Project creation
+
 2️⃣ Database design (ER diagram)
+
 3️⃣ Models
+
 4️⃣ Entity Framework setup
+
 5️⃣ CRUD operations
+
 6️⃣ Build and run commands
+
 
 1️⃣ Install Required Tools
 
@@ -288,6 +313,7 @@ C# extension
 Check installation:
 
 dotnet --version
+
 2️⃣ Create ASP.NET Core MVC Project
 
 Open terminal.
@@ -303,6 +329,7 @@ cd InventoryManagementSystem
 Open project in VS Code:
 
 code .
+
 3️⃣ Install Entity Framework Packages
 
 Run:
@@ -316,7 +343,9 @@ Build project:
 dotnet build
 
 4️⃣ Project Folder Structure
+
 InventoryManagementSystem
+
 │
 ├── Controllers
 │
@@ -330,6 +359,7 @@ InventoryManagementSystem
 │
 ├── appsettings.json
 └── Program.cs
+
 5️⃣ Database Design (ER Diagram)
 
 Main tables:
@@ -354,7 +384,9 @@ Price
 Quantity
 CategoryId
 SupplierId
+
 ER Diagram
+
 Category
    |
    | (1)
@@ -413,6 +445,7 @@ public class Supplier
 
     public string Email { get; set; }
 }
+
 7️⃣ Create Database Context
 
 Create folder Data
@@ -435,6 +468,7 @@ public class AppDbContext : DbContext
 
     public DbSet<Supplier> Suppliers { get; set; }
 }
+
 8️⃣ Configure Database Connection
 
 Open appsettings.json
@@ -444,6 +478,7 @@ Add connection string:
 "ConnectionStrings": {
 "DefaultConnection": "Server=localhost;Database=InventoryDB;Trusted_Connection=True;TrustServerCertificate=True"
 }
+
 9️⃣ Register DbContext
 
 Open Program.cs
@@ -456,6 +491,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 Add using:
 
 using Microsoft.EntityFrameworkCore;
+
 🔟 Create Database Migration
 
 Run:
@@ -514,6 +550,7 @@ public class ProductController : Controller
         return RedirectToAction("Index");
     }
 }
+
 1️⃣2️⃣ Create Views
 
 Create folder:
@@ -567,6 +604,7 @@ Quantity:
 <button type="submit">Save</button>
 
 </form>
+
 1️⃣3️⃣ Run the Project
 
 Run command:
@@ -584,13 +622,17 @@ You can now:
 ✔ Delete product
 
 1️⃣4️⃣ Build Project
+
 dotnet build
+
 1️⃣5️⃣ Publish Project
+
 dotnet publish -c Release
 
 Output folder:
 
 bin/Release/net8.0/publish
+
 1️⃣6️⃣ Inventory System Features
 
 This project now supports:
